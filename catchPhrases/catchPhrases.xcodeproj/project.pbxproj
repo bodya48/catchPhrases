@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1C0497041F56B2090096F7E6 /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C0497031F56B2090096F7E6 /* Category.storyboard */; };
 		1C0497071F56B3050096F7E6 /* CategoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0497061F56B3050096F7E6 /* CategoryTableViewController.m */; };
+		1C1ACEA01F56D84100EDFFE1 /* CSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1ACE9F1F56D84100EDFFE1 /* CSVParser.m */; };
 		1C7219BA1F560DAE007D199C /* Play.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C7219B91F560DAE007D199C /* Play.storyboard */; };
 		1C7219BD1F560DE6007D199C /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7219BC1F560DE6007D199C /* PlayViewController.m */; };
 		1C7219BF1F5611FA007D199C /* Media in Resources */ = {isa = PBXBuildFile; fileRef = 1C7219BE1F5611FA007D199C /* Media */; };
@@ -26,6 +27,8 @@
 		1C0497031F56B2090096F7E6 /* Category.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Category.storyboard; sourceTree = "<group>"; };
 		1C0497051F56B3050096F7E6 /* CategoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryTableViewController.h; sourceTree = "<group>"; };
 		1C0497061F56B3050096F7E6 /* CategoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryTableViewController.m; sourceTree = "<group>"; };
+		1C1ACE9E1F56D84100EDFFE1 /* CSVParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSVParser.h; sourceTree = "<group>"; };
+		1C1ACE9F1F56D84100EDFFE1 /* CSVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSVParser.m; sourceTree = "<group>"; };
 		1C7219B91F560DAE007D199C /* Play.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Play.storyboard; sourceTree = "<group>"; };
 		1C7219BB1F560DE6007D199C /* PlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayViewController.h; sourceTree = "<group>"; };
 		1C7219BC1F560DE6007D199C /* PlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayViewController.m; sourceTree = "<group>"; };
@@ -71,6 +74,8 @@
 			children = (
 				1C7219C41F5614D3007D199C /* PhraseHelper.h */,
 				1C7219C51F5614D3007D199C /* PhraseHelper.m */,
+				1C1ACE9E1F56D84100EDFFE1 /* CSVParser.h */,
+				1C1ACE9F1F56D84100EDFFE1 /* CSVParser.m */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -222,6 +227,7 @@
 				1C7219C21F5614C0007D199C /* PhrasesDatabase.m in Sources */,
 				1C94E1141F55FEE500A0CF59 /* AppDelegate.m in Sources */,
 				1C94E1111F55FEE500A0CF59 /* main.m in Sources */,
+				1C1ACEA01F56D84100EDFFE1 /* CSVParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
