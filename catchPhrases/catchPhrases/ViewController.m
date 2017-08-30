@@ -8,11 +8,17 @@
 
 #import "ViewController.h"
 #import "PlayViewController.h"
+#import "CategoryTableViewController.h"
 
 
-@interface ViewController () <PlayViewControllerDelegate>
+
+@interface ViewController () <PlayViewControllerDelegate, UIPopoverPresentationControllerDelegate, CategoryTableViewControllerDelegate>
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *categoryButton;
 
 @end
+
+
 
 
 @implementation ViewController
@@ -21,8 +27,6 @@
     [super viewDidLoad];
     
 }
-
-
 
 
 - (IBAction)startGamePressed:(id)sender {
@@ -41,6 +45,33 @@
 
 - (void)playViewController:(PlayViewController *)viewController backButtonPressed:(id)sender {
     [viewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+
+
+- (IBAction)categoryButtonPressed:(id)sender {
+    UIStoryboard *storyboard        = [UIStoryboard storyboardWithName:@"Category" bundle:nil];
+    UINavigationController *navVC   = [storyboard instantiateInitialViewController];
+    navVC.preferredContentSize      = CGSizeMake(self.view.bounds.size.width / 3, self.view.bounds.size.height / 2);
+    navVC.modalPresentationStyle    = UIModalPresentationPopover;
+    navVC.popoverPresentationController.delegate = self;
+    
+    CategoryTableViewController *categoryVC = (CategoryTableViewController *)[[navVC viewControllers] firstObject];
+    categoryVC.delegate = self;
+    
+    [self presentViewController:navVC animated:YES completion:nil];
+}
+
+
+- (void)prepareForPopoverPresentation:(UIPopoverPresentationController *)popoverPresentationController {
+    popoverPresentationController.permittedArrowDirections  = UIPopoverArrowDirectionAny;
+    popoverPresentationController.barButtonItem             = self.categoryButton;
+}
+
+
+- (void)category:(CategoryTableViewController *)categoryVC backButtonPressed:(id)sender {
+    [categoryVC dismissViewControllerAnimated:YES completion:nil];
 }
 
 
