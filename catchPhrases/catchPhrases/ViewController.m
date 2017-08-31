@@ -53,7 +53,7 @@
 - (IBAction)settingsButtonPressed:(id)sender {
     UIStoryboard *storyboard        = [UIStoryboard storyboardWithName:@"Settings" bundle:nil];
     UINavigationController *navVC   = [storyboard instantiateInitialViewController];
-    navVC.preferredContentSize      = CGSizeMake(self.view.bounds.size.width / 3, self.view.bounds.size.height / 2);
+    navVC.preferredContentSize      = CGSizeMake(320, 410);
     navVC.modalPresentationStyle    = UIModalPresentationPopover;
     navVC.popoverPresentationController.delegate = self;
     
