@@ -31,6 +31,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    self.tableView.estimatedRowHeight   = 40;
+    self.tableView.rowHeight            = UITableViewAutomaticDimension;
     [self prepopulateCategoriesTitles];
     [self prepopulateSettings];
 }
@@ -45,6 +47,10 @@
 
 
 #pragma mark - Table view
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    return UITableViewAutomaticDimension;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self selectDeselectCell:tableView indexPath:indexPath];
 }
@@ -54,13 +60,13 @@
 }
 
 - (void)selectDeselectCell:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if (indexPath.section == 2) return;
     
     if (indexPath.section == 1) // deal with language
         [self handleSingleSelectionForTableView:tableView indexPath:indexPath];
     
     else // deal with categories
-        [self reverseCellSelection:cell];
+        [self reverseCellSelection:[tableView cellForRowAtIndexPath:indexPath]];
 }
 
 
