@@ -17,9 +17,9 @@
     PhrasesDatabase *container  = [PhrasesDatabase sharedInstance];
     NSArray *usedPhrases        = container.usedPhrasesArray;
     NSString *newPhrase         = [self newPhrase:container.allPhrasesArray];
-    
+
     while ([self wasThisPhraseUsed:newPhrase usedPhrases:usedPhrases]) {
-        if ([container.allPhrasesArray count] == [container.usedPhrasesArray count]) {
+        if ([container.usedPhrasesArray count] == [container.allPhrasesArray count] - 1) {
             newPhrase = nil;
             break;
         }
@@ -27,6 +27,9 @@
     }
     
     [container phraseWasUsed:newPhrase];
+    
+    NSLog(@"all phrases: %ld", [container.allPhrasesArray count]);
+    NSLog(@"used phrases: %ld\n", [container.usedPhrasesArray count]);
     return newPhrase;
 }
 
@@ -47,8 +50,10 @@
     return randomNumber;
 }
 
-    
 
++ (void)updateAllPhrasesAccordingToSettings {
+    [[PhrasesDatabase sharedInstance] updateAllPhrasesAccordingToSettings];
+}
 
 
 @end

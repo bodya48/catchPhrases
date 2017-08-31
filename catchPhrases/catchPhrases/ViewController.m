@@ -8,13 +8,13 @@
 
 #import "ViewController.h"
 #import "PlayViewController.h"
-#import "CategoryTableViewController.h"
+#import "SettingsTableViewController.h"
 
 
 
-@interface ViewController () <PlayViewControllerDelegate, UIPopoverPresentationControllerDelegate, CategoryTableViewControllerDelegate>
+@interface ViewController () <PlayViewControllerDelegate, UIPopoverPresentationControllerDelegate, SettingsTableViewControllerDelegate>
 
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *categoryButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *settingsButton;
 
 @end
 
@@ -50,15 +50,15 @@
 
 
 
-- (IBAction)categoryButtonPressed:(id)sender {
-    UIStoryboard *storyboard        = [UIStoryboard storyboardWithName:@"Category" bundle:nil];
+- (IBAction)settingsButtonPressed:(id)sender {
+    UIStoryboard *storyboard        = [UIStoryboard storyboardWithName:@"Settings" bundle:nil];
     UINavigationController *navVC   = [storyboard instantiateInitialViewController];
     navVC.preferredContentSize      = CGSizeMake(self.view.bounds.size.width / 3, self.view.bounds.size.height / 2);
     navVC.modalPresentationStyle    = UIModalPresentationPopover;
     navVC.popoverPresentationController.delegate = self;
     
-    CategoryTableViewController *categoryVC = (CategoryTableViewController *)[[navVC viewControllers] firstObject];
-    categoryVC.delegate = self;
+    SettingsTableViewController *settingsVC = (SettingsTableViewController *)[[navVC viewControllers] firstObject];
+    settingsVC.delegate = self;
     
     [self presentViewController:navVC animated:YES completion:nil];
 }
@@ -66,12 +66,12 @@
 
 - (void)prepareForPopoverPresentation:(UIPopoverPresentationController *)popoverPresentationController {
     popoverPresentationController.permittedArrowDirections  = UIPopoverArrowDirectionAny;
-    popoverPresentationController.barButtonItem             = self.categoryButton;
+    popoverPresentationController.barButtonItem             = self.settingsButton;
 }
 
 
-- (void)category:(CategoryTableViewController *)categoryVC backButtonPressed:(id)sender {
-    [categoryVC dismissViewControllerAnimated:YES completion:nil];
+- (void)settings:(SettingsTableViewController *)settingsVC backButtonPressed:(id)sender {
+    [settingsVC dismissViewControllerAnimated:YES completion:nil];
 }
 
 

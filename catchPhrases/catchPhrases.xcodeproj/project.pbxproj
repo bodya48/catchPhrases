@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1C0497041F56B2090096F7E6 /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C0497031F56B2090096F7E6 /* Category.storyboard */; };
-		1C0497071F56B3050096F7E6 /* CategoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0497061F56B3050096F7E6 /* CategoryTableViewController.m */; };
-		1C1ACEA01F56D84100EDFFE1 /* CSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1ACE9F1F56D84100EDFFE1 /* CSVParser.m */; };
+		1C0497041F56B2090096F7E6 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C0497031F56B2090096F7E6 /* Settings.storyboard */; };
+		1C0497071F56B3050096F7E6 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0497061F56B3050096F7E6 /* SettingsTableViewController.m */; };
 		1C7219BA1F560DAE007D199C /* Play.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C7219B91F560DAE007D199C /* Play.storyboard */; };
 		1C7219BD1F560DE6007D199C /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7219BC1F560DE6007D199C /* PlayViewController.m */; };
 		1C7219BF1F5611FA007D199C /* Media in Resources */ = {isa = PBXBuildFile; fileRef = 1C7219BE1F5611FA007D199C /* Media */; };
@@ -21,15 +20,15 @@
 		1C94E11A1F55FEE500A0CF59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C94E1181F55FEE500A0CF59 /* Main.storyboard */; };
 		1C94E11C1F55FEE500A0CF59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C94E11B1F55FEE500A0CF59 /* Assets.xcassets */; };
 		1C94E11F1F55FEE500A0CF59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C94E11D1F55FEE500A0CF59 /* LaunchScreen.storyboard */; };
+		1CB0C82D1F57DC2D00F923CC /* SettingsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB0C82C1F57DC2D00F923CC /* SettingsHelper.m */; };
+		1CB0C8301F57DC3B00F923CC /* SettingsEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB0C82F1F57DC3B00F923CC /* SettingsEntity.m */; };
 		1CE2009D1F57692A007591E9 /* Phrases in Resources */ = {isa = PBXBuildFile; fileRef = 1CE2009C1F57692A007591E9 /* Phrases */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1C0497031F56B2090096F7E6 /* Category.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Category.storyboard; sourceTree = "<group>"; };
-		1C0497051F56B3050096F7E6 /* CategoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryTableViewController.h; sourceTree = "<group>"; };
-		1C0497061F56B3050096F7E6 /* CategoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryTableViewController.m; sourceTree = "<group>"; };
-		1C1ACE9E1F56D84100EDFFE1 /* CSVParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSVParser.h; sourceTree = "<group>"; };
-		1C1ACE9F1F56D84100EDFFE1 /* CSVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSVParser.m; sourceTree = "<group>"; };
+		1C0497031F56B2090096F7E6 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		1C0497051F56B3050096F7E6 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
+		1C0497061F56B3050096F7E6 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 		1C7219B91F560DAE007D199C /* Play.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Play.storyboard; sourceTree = "<group>"; };
 		1C7219BB1F560DE6007D199C /* PlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayViewController.h; sourceTree = "<group>"; };
 		1C7219BC1F560DE6007D199C /* PlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayViewController.m; sourceTree = "<group>"; };
@@ -48,6 +47,10 @@
 		1C94E11B1F55FEE500A0CF59 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C94E11E1F55FEE500A0CF59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1C94E1201F55FEE500A0CF59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1CB0C82B1F57DC2D00F923CC /* SettingsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsHelper.h; sourceTree = "<group>"; };
+		1CB0C82C1F57DC2D00F923CC /* SettingsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsHelper.m; sourceTree = "<group>"; };
+		1CB0C82E1F57DC3B00F923CC /* SettingsEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsEntity.h; sourceTree = "<group>"; };
+		1CB0C82F1F57DC3B00F923CC /* SettingsEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsEntity.m; sourceTree = "<group>"; };
 		1CE2009C1F57692A007591E9 /* Phrases */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Phrases; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,6 +70,8 @@
 			children = (
 				1C7219C01F5614C0007D199C /* PhrasesDatabase.h */,
 				1C7219C11F5614C0007D199C /* PhrasesDatabase.m */,
+				1CB0C82E1F57DC3B00F923CC /* SettingsEntity.h */,
+				1CB0C82F1F57DC3B00F923CC /* SettingsEntity.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -76,8 +81,8 @@
 			children = (
 				1C7219C41F5614D3007D199C /* PhraseHelper.h */,
 				1C7219C51F5614D3007D199C /* PhraseHelper.m */,
-				1C1ACE9E1F56D84100EDFFE1 /* CSVParser.h */,
-				1C1ACE9F1F56D84100EDFFE1 /* CSVParser.m */,
+				1CB0C82B1F57DC2D00F923CC /* SettingsHelper.h */,
+				1CB0C82C1F57DC2D00F923CC /* SettingsHelper.m */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -132,8 +137,8 @@
 				1C94E1161F55FEE500A0CF59 /* ViewController.m */,
 				1C7219BB1F560DE6007D199C /* PlayViewController.h */,
 				1C7219BC1F560DE6007D199C /* PlayViewController.m */,
-				1C0497051F56B3050096F7E6 /* CategoryTableViewController.h */,
-				1C0497061F56B3050096F7E6 /* CategoryTableViewController.m */,
+				1C0497051F56B3050096F7E6 /* SettingsTableViewController.h */,
+				1C0497061F56B3050096F7E6 /* SettingsTableViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -143,7 +148,7 @@
 			children = (
 				1C94E1181F55FEE500A0CF59 /* Main.storyboard */,
 				1C7219B91F560DAE007D199C /* Play.storyboard */,
-				1C0497031F56B2090096F7E6 /* Category.storyboard */,
+				1C0497031F56B2090096F7E6 /* Settings.storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -208,7 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CE2009D1F57692A007591E9 /* Phrases in Resources */,
-				1C0497041F56B2090096F7E6 /* Category.storyboard in Resources */,
+				1C0497041F56B2090096F7E6 /* Settings.storyboard in Resources */,
 				1C94E11F1F55FEE500A0CF59 /* LaunchScreen.storyboard in Resources */,
 				1C7219BF1F5611FA007D199C /* Media in Resources */,
 				1C94E11C1F55FEE500A0CF59 /* Assets.xcassets in Resources */,
@@ -225,13 +230,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C7219BD1F560DE6007D199C /* PlayViewController.m in Sources */,
-				1C0497071F56B3050096F7E6 /* CategoryTableViewController.m in Sources */,
+				1C0497071F56B3050096F7E6 /* SettingsTableViewController.m in Sources */,
 				1C7219C61F5614D3007D199C /* PhraseHelper.m in Sources */,
+				1CB0C82D1F57DC2D00F923CC /* SettingsHelper.m in Sources */,
 				1C94E1171F55FEE500A0CF59 /* ViewController.m in Sources */,
 				1C7219C21F5614C0007D199C /* PhrasesDatabase.m in Sources */,
 				1C94E1141F55FEE500A0CF59 /* AppDelegate.m in Sources */,
 				1C94E1111F55FEE500A0CF59 /* main.m in Sources */,
-				1C1ACEA01F56D84100EDFFE1 /* CSVParser.m in Sources */,
+				1CB0C8301F57DC3B00F923CC /* SettingsEntity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

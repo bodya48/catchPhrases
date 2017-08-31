@@ -12,5 +12,6 @@
 @interface PhraseHelper : NSObject
 
 + (NSString *)nextPhrase;
++ (void)updateAllPhrasesAccordingToSettings;
 
 @end

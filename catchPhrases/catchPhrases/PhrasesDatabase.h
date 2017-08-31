@@ -16,4 +16,12 @@
 - (NSArray *)usedPhrasesArray;
 - (void)phraseWasUsed:(NSString *)phrase;
 
+- (void)updateAllPhrasesAccordingToSettings;
+- (void)prepareAllPhrases;
+
+- (int)nounsCount;
+- (int)nounsLongCount;
+- (int)moviesCount;
+- (int)idiomsCount;
+
 @end
