@@ -25,6 +25,7 @@
 + (SettingsEntity *)loadSettings {
     NSData *settingsData     = [[NSUserDefaults standardUserDefaults] objectForKey:KEY_FOR_SETTINGS_ENTITY];
     SettingsEntity *settings = [NSKeyedUnarchiver unarchiveObjectWithData:settingsData];
+    if (!settings) settings  = [self defaultSettings];
     return settings;
 }
 
@@ -33,9 +34,28 @@
     if (oldSettings.nouns   != newSetting.nouns)    return NO;
     if (oldSettings.movies  != newSetting.movies)   return NO;
     if (oldSettings.idioms  != newSetting.idioms)   return NO;
-    if (oldSettings.russian != newSetting.russian)  return NO;
-    if (oldSettings.english != newSetting.english)  return NO;
+    if (oldSettings.nounsAmount != newSetting.nounsAmount) return NO;
+    
     return YES;
+}
+
+
++ (SettingsEntity *)defaultSettings {
+    SettingsEntity *settings = [[SettingsEntity alloc] init];
+    
+    [settings setNouns:YES];
+    [settings setMovies:NO];
+    [settings setIdioms:NO];
+    
+    [settings setRussian:YES];
+    [settings setEnglish:NO];
+    
+    [settings setNounsAmount:NounsAmountAll];
+    [settings setPhraseFontSize:CatchPhraseFontSizeSmall];
+    [settings setClearUsedPhrases:NO];
+    
+    [self saveSettings:settings];
+    return settings;
 }
 
 @end

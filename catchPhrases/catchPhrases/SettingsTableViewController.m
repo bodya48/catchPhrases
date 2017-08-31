@@ -16,7 +16,10 @@
 
 @interface SettingsTableViewController ()
 
-@property (strong, nonatomic) SettingsEntity *oldSettings;
+@property (strong, nonatomic) SettingsEntity            *oldSettings;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *nounsAmount;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *catchphraseFontSize;
+@property (weak, nonatomic) IBOutlet UISwitch           *clearUsedPhrases;
 
 @end
 
@@ -25,6 +28,7 @@
 
 @implementation SettingsTableViewController
 
+#pragma mark - View
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
@@ -69,8 +73,7 @@
         [self reverseCellSelection:[tableView cellForRowAtIndexPath:indexPath]];
 }
 
-
-#pragma mark - Single selection
+#pragma mark Single selection
 - (void)handleSingleSelectionForTableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     NSInteger index;
@@ -96,6 +99,7 @@
 
 
 
+
 #pragma mark - Navigation
 - (IBAction)backButtonPressed:(id)sender {
     if ([_delegate respondsToSelector:@selector(settings:backButtonPressed:)])
@@ -104,23 +108,25 @@
 
 
 
-
 #pragma mark - Settings
 - (void)prepopulateCategoriesTitles {
-    PhrasesDatabase *database = [PhrasesDatabase sharedInstance];
+    PhrasesDatabase *database   = [PhrasesDatabase sharedInstance];
+    NSMutableString *labelText  = [[NSMutableString alloc] init];
     UITableViewCell *cell;
     
-    cell                = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-    cell.textLabel.text = [NSString stringWithFormat:@"Существительные [%d]", [database nounsCount]];
+    cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    [labelText appendString:cell.textLabel.text];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ [%d]", labelText, [database nounsCount]];
     
-    cell                = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
-    cell.textLabel.text = [NSString stringWithFormat:@"Существительные 2 [%d]", [database nounsCount]];
+    cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+    labelText = [[NSMutableString alloc] init];
+    [labelText appendString:cell.textLabel.text];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ [%d]", labelText, [database moviesCount]];
     
-    cell                = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
-    cell.textLabel.text = [NSString stringWithFormat:@"Фильмы / мультфильмы [%d]", [database moviesCount]];
-    
-    cell                = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
-    cell.textLabel.text = [NSString stringWithFormat:@"Идиомы / Фразеологизмы [%d]", [database idiomsCount]];
+    cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+    labelText = [[NSMutableString alloc] init];
+    [labelText appendString:cell.textLabel.text];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ [%d]", labelText, [database idiomsCount]];
 }
 
 - (void)prepopulateSettings {
@@ -129,49 +135,46 @@
     
     if (settings.nouns)
         [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]].accessoryType = UITableViewCellAccessoryCheckmark;
-    if (settings.nouns2)
-        [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]].accessoryType = UITableViewCellAccessoryCheckmark;
     if (settings.movies)
-        [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]].accessoryType = UITableViewCellAccessoryCheckmark;
+        [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]].accessoryType = UITableViewCellAccessoryCheckmark;
     if (settings.idioms)
-        [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]].accessoryType = UITableViewCellAccessoryCheckmark;
+        [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]].accessoryType = UITableViewCellAccessoryCheckmark;
     
     if (settings.russian)
         [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]].accessoryType = UITableViewCellAccessoryCheckmark;
     if (settings.english)
         [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]].accessoryType = UITableViewCellAccessoryCheckmark;
+    
+    [self.nounsAmount         setSelectedSegmentIndex:settings.nounsAmount];
+    [self.catchphraseFontSize setSelectedSegmentIndex:settings.phraseFontSize];
+    [self.clearUsedPhrases    setOn:settings.clearUsedPhrases];
 }
 
 
 - (void)saveSettings {
     SettingsEntity *newSettings = [SettingsEntity new];
     
-    if ([self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]].accessoryType == UITableViewCellAccessoryCheckmark)
-        [newSettings setNouns:YES];
+    if ([self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]].accessoryType == UITableViewCellAccessoryCheckmark) [newSettings setNouns:YES];
     else [newSettings setNouns:NO];
     
-    if ([self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]].accessoryType == UITableViewCellAccessoryCheckmark)
-        [newSettings setNouns2:YES];
-    else [newSettings setNouns2:NO];
-    
-    if ([self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]].accessoryType == UITableViewCellAccessoryCheckmark)
-        [newSettings setMovies:YES];
+    if ([self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]].accessoryType == UITableViewCellAccessoryCheckmark) [newSettings setMovies:YES];
     else [newSettings setMovies:NO];
     
-    if ([self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]].accessoryType == UITableViewCellAccessoryCheckmark)
-        [newSettings setIdioms:YES];
+    if ([self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]].accessoryType == UITableViewCellAccessoryCheckmark) [newSettings setIdioms:YES];
     else [newSettings setIdioms:NO];
     
-    if ([self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]].accessoryType == UITableViewCellAccessoryCheckmark)
-        [newSettings setRussian:YES];
+    if ([self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]].accessoryType == UITableViewCellAccessoryCheckmark) [newSettings setRussian:YES];
     else [newSettings setRussian:NO];
     
-    if ([self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]].accessoryType == UITableViewCellAccessoryCheckmark)
-        [newSettings setEnglish:YES];
+    if ([self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]].accessoryType == UITableViewCellAccessoryCheckmark) [newSettings setEnglish:YES];
     else [newSettings setEnglish:NO];
     
     if (!newSettings.nouns && !newSettings.movies && !newSettings.idioms)
         [newSettings setNouns:YES];
+    
+    [newSettings setNounsAmount:      (int)self.nounsAmount.selectedSegmentIndex];
+    [newSettings setPhraseFontSize:   (int)self.catchphraseFontSize.selectedSegmentIndex];
+    [newSettings setClearUsedPhrases: self.clearUsedPhrases.isOn];
     
     if (![SettingsHelper isSetting:self.oldSettings equalTo:newSettings]) {
         [SettingsHelper saveSettings:newSettings];
@@ -179,5 +182,17 @@
     }
 }
 
+- (IBAction)defaultSettingsPressed:(id)sender {
+    [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]].accessoryType = UITableViewCellAccessoryCheckmark;
+        [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]].accessoryType = UITableViewCellAccessoryNone;
+        [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]].accessoryType = UITableViewCellAccessoryNone;
+    
+        [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]].accessoryType = UITableViewCellAccessoryCheckmark;
+        [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]].accessoryType = UITableViewCellAccessoryNone;
+    
+    [self.nounsAmount         setSelectedSegmentIndex:NounsAmountAll];
+    [self.catchphraseFontSize setSelectedSegmentIndex:CatchPhraseFontSizeSmall];
+    [self.clearUsedPhrases    setOn:NO];
+}
 
 @end

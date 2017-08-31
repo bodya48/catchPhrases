@@ -12,7 +12,6 @@
 
 
 #define csvNounsFileName     @"nouns.csv"
-#define csvNounsLongFileName @"nouns2.csv"
 #define csvMoviesFileName    @"movies.csv"
 #define csvIdiomsFileName    @"idioms.csv"
 
@@ -47,14 +46,11 @@
     return instance;
 }
 
-
 - (void)pullAllPhrases {
     self.nouns      = [self parseCSVFile:csvNounsFileName];
-    self.nounsLong  = [self parseCSVFile:csvNounsLongFileName];
     self.movies     = [self parseCSVFile:csvMoviesFileName];
     self.idioms     = [self parseCSVFile:csvIdiomsFileName];
 }
-
 
 - (NSMutableArray *)allPhrasesArray {
     return self.allPhrases;
@@ -77,8 +73,6 @@
     
     if (settings.nouns)
         [self addPhrases:self.nouns toArray:self.allPhrases];
-    if (settings.nouns2)
-        [self addPhrases:self.nounsLong toArray:self.allPhrases];
     if (settings.movies)
         [self addPhrases:self.movies toArray:self.allPhrases];
     if (settings.idioms)
@@ -90,7 +84,10 @@
 
 - (void)updateAllPhrasesAccordingToSettings {
     self.allPhrases  = [[NSMutableArray alloc] init];
-    //self.usedPhrases = [[NSMutableArray alloc] init];
+    
+    if ([SettingsHelper loadSettings].clearUsedPhrases)
+        self.usedPhrases = [[NSMutableArray alloc] init];
+    
     [self prepareAllPhrases];
 }
 
