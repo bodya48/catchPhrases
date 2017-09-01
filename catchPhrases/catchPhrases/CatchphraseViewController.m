@@ -38,9 +38,6 @@
     self.title            = nil;
     self.middleLabel.text = nil;
     self.largeLabel.text  = nil;
-
-    if (self.settings.phraseFontSize != PhraseFontSizeSmall)
-        self.title = @"Catchphrase Game";
     
     [self addGesture];
     [self startCountDown];

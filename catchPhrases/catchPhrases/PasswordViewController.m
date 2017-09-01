@@ -37,9 +37,6 @@
     self.middleLabel.text = nil;
     self.largeLabel.text  = nil;
     
-    if (self.settings.phraseFontSize != PhraseFontSizeSmall)
-        self.title = @"Password Game";
-    
     [self addGesture];
     [self showNextPhrase];
 }
