@@ -7,7 +7,8 @@
 //
 
 #import "ViewController.h"
-#import "PlayViewController.h"
+#import "CatchPhraseViewController.h"
+#import "PasswordViewController.h"
 #import "SettingsTableViewController.h"
 
 
@@ -29,12 +30,18 @@
 }
 
 
-- (IBAction)startGamePressed:(id)sender {
-    UIStoryboard *storyboard        = [UIStoryboard storyboardWithName:@"Play" bundle:nil];
-    PlayViewController *gameVC = [storyboard instantiateInitialViewController];
-    [self.navigationController pushViewController:gameVC animated:YES];
+- (IBAction)startCatchphrasePressed:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Catchphrase" bundle:nil];
+    CatchphraseViewController *catchphraseVC = [storyboard instantiateInitialViewController];
+    [self.navigationController pushViewController:catchphraseVC animated:YES];
 }
 
+
+- (IBAction)startPasswordPressed:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Password" bundle:nil];
+    PasswordViewController *passwordVC = [storyboard instantiateInitialViewController];
+    [self.navigationController pushViewController:passwordVC animated:YES];
+}
 
 
 - (IBAction)settingsButtonPressed:(id)sender {

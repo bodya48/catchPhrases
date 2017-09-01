@@ -1,12 +1,12 @@
 //
-//  PlayViewController.m
+//  CatchphraseViewController.m
 //  catchPhrases
 //
 //  Created by Bogdan Laukhin on 8/30/17.
 //  Copyright © 2017 ua.org. All rights reserved.
 //
 
-#import "PlayViewController.h"
+#import "CatchphraseViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import "PhraseManager.h"
 #import "SettingsHelper.h"
@@ -14,9 +14,10 @@
 
 
 
-@interface PlayViewController () <UIGestureRecognizerDelegate>
+@interface CatchphraseViewController () <UIGestureRecognizerDelegate>
 
 @property (strong, nonatomic) PhraseManager  *phraseManager;
+@property (strong, nonatomic) SettingsEntity *settings;
 @property (strong, nonatomic) AVPlayer       *avPlayer;
 @property (weak, nonatomic) IBOutlet UILabel *middleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *largeLabel;
@@ -25,21 +26,26 @@
 
 
 
-@implementation PlayViewController
+@implementation CatchphraseViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.phraseManager    = [PhraseManager sharedInstance];
+    self.settings         = [SettingsHelper loadSettings];
+    [self.phraseManager startNewGameSesion];
+    
     self.title            = nil;
     self.middleLabel.text = nil;
     self.largeLabel.text  = nil;
+
+    if (self.settings.phraseFontSize != PhraseFontSizeSmall)
+        self.title = @"Catchphrase Game";
     
-    [self.phraseManager startNewGameSesion];
     [self addGesture];
     [self startCountDown];
     [self showNextPhrase];
 }
-
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -82,30 +88,28 @@
 
 
 - (void)showNextPhrase {
-    NSString *phrase = [self.phraseManager nextPhrase];
+    NSString *phrase = [self.phraseManager catchphraseGameNextPhrase];
     if (!phrase) {
         [self backButtonPressed:nil];
         return;
     }
     
-    SettingsEntity *settings = [SettingsHelper loadSettings];
-    switch (settings.phraseFontSize) {
+    switch (self.settings.phraseFontSize) {
         
-        case CatchPhraseFontSizeSmall:
+        case PhraseFontSizeSmall:
             self.title = phrase;
             break;
             
-        case CatchPhraseFontSizeMiddle:
+        case PhraseFontSizeMiddle:
             self.middleLabel.text = phrase;
             break;
         
-        case CatchPhraseFontSizeLarge:
+        case PhraseFontSizeLarge:
             self.largeLabel.text = phrase;
             break;
             
         default: break;
     }
-    
 }
 
 

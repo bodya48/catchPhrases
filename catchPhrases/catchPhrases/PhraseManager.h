@@ -14,7 +14,10 @@
 + (instancetype)sharedInstance;
 
 - (void)startNewGameSesion;
-- (NSString *)nextPhrase;
+
+- (NSString *)catchphraseGameNextPhrase;
+- (NSString *)passwordGameNextPhrase;
+
 - (void)updateAllPhrasesAccordingToSettings;
 
 - (int)nounsCount;

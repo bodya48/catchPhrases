@@ -1,5 +1,5 @@
 //
-//  PlayViewController.h
+//  CatchphraseViewController.h
 //  catchPhrases
 //
 //  Created by Bogdan Laukhin on 8/30/17.
@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 
-@interface PlayViewController : UIViewController
+@interface CatchphraseViewController : UIViewController
 
 @end

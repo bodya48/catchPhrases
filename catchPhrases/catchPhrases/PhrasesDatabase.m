@@ -15,11 +15,17 @@
 #define csvMoviesFileName    @"movies.csv"
 #define csvIdiomsFileName    @"idioms.csv"
 
+typedef enum {
+    GameTypeCatchphrase,
+    GameTypePassword
+} GameType;
+
 
 
 @interface PhrasesDatabase ()
 
-@property (strong, nonatomic) NSMutableArray    *allPhrases;
+@property (strong, nonatomic) NSMutableArray    *catchphrasePhrases;
+@property (strong, nonatomic) NSMutableArray    *passwordPhrases;
 @property (strong, nonatomic) NSMutableArray    *usedPhrases;
 
 @property (strong, nonatomic) NSArray *nouns;
@@ -37,9 +43,10 @@
     static PhrasesDatabase *instance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        instance             = [[PhrasesDatabase alloc] init];
-        instance.allPhrases  = [[NSMutableArray alloc] init];
-        instance.usedPhrases = [[NSMutableArray alloc] init];
+        instance                    = [[PhrasesDatabase alloc] init];
+        instance.catchphrasePhrases = [[NSMutableArray alloc] init];
+        instance.passwordPhrases    = [[NSMutableArray alloc] init];
+        instance.usedPhrases        = [[NSMutableArray alloc] init];
         [instance pullAllPhrasesFromCSV];
     });
     return instance;
@@ -51,8 +58,12 @@
     self.idioms     = [self parseCSVFile:csvIdiomsFileName];
 }
 
-- (NSMutableArray *)allPhrasesArray {
-    return self.allPhrases;
+- (NSArray *)catchphrasePhrasesArray {
+    return [NSArray arrayWithArray:self.catchphrasePhrases];
+}
+
+- (NSArray *)passwordPhrasesArray {
+    return [NSArray arrayWithArray:self.passwordPhrases];
 }
 
 - (NSMutableArray *)usedPhrasesArray {
@@ -69,21 +80,47 @@
 #pragma mark - Prepare phrases for game
 - (void)preparePhrasesForGameSession {
     SettingsEntity *settings = [SettingsHelper loadSettings];
-    self.allPhrases          = [[NSMutableArray alloc] init];
-    if (settings.clearUsedPhrases)
-        self.usedPhrases     = [[NSMutableArray alloc] init];
     
-    if (settings.nouns)
-        [self addPhrases:self.nouns  withLimitNumber:settings.nounsAmount];
+    [self preparePhrasesForGame:GameTypeCatchphrase withSettings:settings];
+    [self preparePhrasesForGame:GameTypePassword    withSettings:settings];
     
-    if (settings.movies)
-        [self addPhrases:self.movies withLimitNumber:NounsAmountAll];
-    
-    if (settings.idioms)
-        [self addPhrases:self.idioms withLimitNumber:NounsAmountAll];
-    
-    [self randomizeAllPhrases];
+    [self randomizeAllPhrases:self.catchphrasePhrases];
+    [self randomizeAllPhrases:self.passwordPhrases];
 }
+
+- (void)preparePhrasesForGame:(GameType)game withSettings:(SettingsEntity *)settings {
+    if (settings.clearUsedPhrases)
+        self.usedPhrases = [[NSMutableArray alloc] init];
+    
+    switch (game) {
+        case GameTypeCatchphrase: {
+            self.catchphrasePhrases = [[NSMutableArray alloc] init];
+            if (settings.nouns)
+                [self addPhrases:self.nouns  intoArray:self.catchphrasePhrases withLimitNumber:settings.nounsAmount];
+            
+            if (settings.movies)
+                [self addPhrases:self.movies intoArray:self.catchphrasePhrases withLimitNumber:NounsAmountAll];
+            
+            if (settings.idioms)
+                [self addPhrases:self.idioms intoArray:self.catchphrasePhrases withLimitNumber:NounsAmountAll];
+        }   break;
+        
+        case GameTypePassword: {
+            self.passwordPhrases = [[NSMutableArray alloc] init];
+            if (settings.nouns)
+                [self addPhrases:self.nouns  intoArray:self.passwordPhrases withLimitNumber:settings.nounsAmount];
+            
+            if (settings.movies)
+                [self addPhrases:self.movies intoArray:self.passwordPhrases withLimitNumber:NounsAmountAll];
+            
+            if (settings.idioms)
+                [self addPhrases:self.idioms intoArray:self.passwordPhrases withLimitNumber:NounsAmountAll];
+            
+        }   break;
+        default: break;
+    }
+}
+
 
 
 
@@ -101,8 +138,9 @@
 
 
 
-- (void)addPhrases:(NSArray *)phrasesArray withLimitNumber:(NounsAmount)limitNumber {
+- (void)addPhrases:(NSArray *)phrasesArray intoArray:(NSMutableArray *)allPhrasesArray withLimitNumber:(NounsAmount)limitNumber {
     NSInteger limit;
+    
     switch (limitNumber) {
         case NounsAmount50:
             limit = 50; break;
@@ -130,13 +168,14 @@
         NSString *phrase = phrasesArray[index];
         if (!phrase || [phrase length] == 0) return;
         
-        [self.allPhrases addObject:phrase];
+        [allPhrasesArray addObject:phrase];
     }
 }
 
-- (void)randomizeAllPhrases {
-    for (NSInteger i = self.allPhrases.count - 1; i > 0; i--) {
-        [self.allPhrases exchangeObjectAtIndex:i withObjectAtIndex:arc4random_uniform((int)i + 1)];
+
+- (void)randomizeAllPhrases:(NSMutableArray *)phrasesArray {
+    for (NSInteger i = phrasesArray.count - 1; i > 0; i--) {
+        [phrasesArray exchangeObjectAtIndex:i withObjectAtIndex:arc4random_uniform((int)i + 1)];
     }
 }
 

@@ -20,10 +20,10 @@ typedef enum {
 } NounsAmount;
 
 typedef enum {
-    CatchPhraseFontSizeSmall,
-    CatchPhraseFontSizeMiddle,
-    CatchPhraseFontSizeLarge
-} CatchPhraseFontSize;
+    PhraseFontSizeSmall,
+    PhraseFontSizeMiddle,
+    PhraseFontSizeLarge
+} PhraseFontSize;
 
 
 @interface SettingsEntity : NSObject <NSCoding>
@@ -35,8 +35,8 @@ typedef enum {
 @property (assign, nonatomic) BOOL russian;
 @property (assign, nonatomic) BOOL english;
 
-@property (assign, nonatomic) NounsAmount           nounsAmount;
-@property (assign, nonatomic) CatchPhraseFontSize   phraseFontSize;
-@property (assign, nonatomic) BOOL                  clearUsedPhrases;
+@property (assign, nonatomic) NounsAmount       nounsAmount;
+@property (assign, nonatomic) PhraseFontSize    phraseFontSize;
+@property (assign, nonatomic) BOOL              clearUsedPhrases;
 
 @end

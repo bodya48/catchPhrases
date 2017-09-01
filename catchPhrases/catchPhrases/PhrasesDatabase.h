@@ -12,7 +12,8 @@
 
 + (instancetype)sharedInstance;
 
-- (NSArray *)allPhrasesArray;
+- (NSArray *)catchphrasePhrasesArray;
+- (NSArray *)passwordPhrasesArray;
 - (NSArray *)usedPhrasesArray;
 - (void)phraseWasUsed:(NSString *)phrase;
 

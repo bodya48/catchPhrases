@@ -21,19 +21,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zDF-gs-0f8">
-                                <rect key="frame" x="25.5" y="297.5" width="324" height="72"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
-                                <state key="normal" title="PRESS START"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zDF-gs-0f8" userLabel="catchphrase">
+                                <rect key="frame" x="5.5" y="263.5" width="364" height="60"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
+                                <state key="normal" title="Catchphrase Game"/>
                                 <connections>
-                                    <action selector="startGamePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="p6s-RX-0aT"/>
+                                    <action selector="startCatchphrasePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sF7-d9-S3g"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h4B-Hq-VzU" userLabel="password">
+                                <rect key="frame" x="35" y="343.5" width="305" height="60"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
+                                <state key="normal" title="Password Game"/>
+                                <connections>
+                                    <action selector="startPasswordPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aYt-bO-rOt"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="zDF-gs-0f8" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="C5p-gI-7Sp"/>
+                            <constraint firstItem="zDF-gs-0f8" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-40" id="C5p-gI-7Sp"/>
+                            <constraint firstItem="h4B-Hq-VzU" firstAttribute="top" secondItem="zDF-gs-0f8" secondAttribute="bottom" constant="20" id="hxz-d7-aYT"/>
                             <constraint firstItem="zDF-gs-0f8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pIG-jL-iem"/>
+                            <constraint firstItem="h4B-Hq-VzU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="u1T-gZ-Eah"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Catchphrase" id="fsP-Id-BdK">
@@ -44,7 +54,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="settingsButton" destination="Ryg-Bu-Xj2" id="8Pr-Pd-mwk"/>
+                        <outlet property="settingsButton" destination="Ryg-Bu-Xj2" id="3BN-p2-4fR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

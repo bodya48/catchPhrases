@@ -52,7 +52,7 @@
     [settings setEnglish:NO];
     
     [settings setNounsAmount:NounsAmountAll];
-    [settings setPhraseFontSize:CatchPhraseFontSizeSmall];
+    [settings setPhraseFontSize:PhraseFontSizeSmall];
     [settings setClearUsedPhrases:NO];
     
     [self saveSettings:settings];

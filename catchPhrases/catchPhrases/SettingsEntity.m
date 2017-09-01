@@ -17,7 +17,7 @@
 #define kEnglishKey         @"english"
 
 #define kNounsAmountKey     @"nounsamount"
-#define kPhraseFontSizeKey  @"catchphrasefontsize"
+#define kPhraseFontSizeKey  @"phrasefontsize"
 #define kClearPhrasesKey    @"clearusedphrases"
 
 

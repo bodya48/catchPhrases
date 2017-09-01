@@ -18,7 +18,7 @@
 @property (strong, nonatomic) PhraseManager             *phraseManager;
 @property (strong, nonatomic) SettingsEntity            *oldSettings;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *nounsAmount;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *catchphraseFontSize;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *phraseFontSize;
 @property (weak, nonatomic) IBOutlet UISwitch           *clearUsedPhrases;
 
 @end
@@ -145,9 +145,9 @@
     if (settings.english)
         [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]].accessoryType = UITableViewCellAccessoryCheckmark;
     
-    [self.nounsAmount         setSelectedSegmentIndex:settings.nounsAmount];
-    [self.catchphraseFontSize setSelectedSegmentIndex:settings.phraseFontSize];
-    [self.clearUsedPhrases    setOn:settings.clearUsedPhrases];
+    [self.nounsAmount       setSelectedSegmentIndex:settings.nounsAmount];
+    [self.phraseFontSize    setSelectedSegmentIndex:settings.phraseFontSize];
+    [self.clearUsedPhrases  setOn:settings.clearUsedPhrases];
 }
 
 
@@ -173,7 +173,7 @@
         [newSettings setNouns:YES];
     
     [newSettings setNounsAmount:      (int)self.nounsAmount.selectedSegmentIndex];
-    [newSettings setPhraseFontSize:   (int)self.catchphraseFontSize.selectedSegmentIndex];
+    [newSettings setPhraseFontSize:   (int)self.phraseFontSize.selectedSegmentIndex];
     [newSettings setClearUsedPhrases: self.clearUsedPhrases.isOn];
     
     if (![SettingsHelper isSetting:self.oldSettings equalTo:newSettings]) {
@@ -190,9 +190,9 @@
         [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]].accessoryType = UITableViewCellAccessoryCheckmark;
         [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]].accessoryType = UITableViewCellAccessoryNone;
     
-    [self.nounsAmount         setSelectedSegmentIndex:NounsAmountAll];
-    [self.catchphraseFontSize setSelectedSegmentIndex:CatchPhraseFontSizeSmall];
-    [self.clearUsedPhrases    setOn:NO];
+    [self.nounsAmount       setSelectedSegmentIndex:NounsAmountAll];
+    [self.phraseFontSize    setSelectedSegmentIndex:PhraseFontSizeSmall];
+    [self.clearUsedPhrases  setOn:NO];
 }
 
 @end

@@ -159,7 +159,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Catchphrase' font size" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xPV-Hs-Ih2" userLabel="label">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Phrase font size" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xPV-Hs-Ih2" userLabel="label">
                                                     <rect key="frame" x="15" y="10" width="345" height="10.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
@@ -200,8 +200,8 @@
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3l-JT-frB" userLabel="label">
                                                     <rect key="frame" x="15" y="10" width="279" height="23.5"/>
-                                                    <string key="text">Clear used phrases each time settings changed (ON)
-Keep used phrases during whole game session (OFF)</string>
+                                                    <string key="text">Keep used phrases between game sessions (OFF)
+Clear used phrases each time (ON)</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -241,9 +241,9 @@ Keep used phrases during whole game session (OFF)</string>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="700"/>
                     <connections>
-                        <outlet property="catchphraseFontSize" destination="0im-J7-ELT" id="Byg-Nc-G1L"/>
                         <outlet property="clearUsedPhrases" destination="pvd-9C-8hb" id="Ca0-yd-TyH"/>
                         <outlet property="nounsAmount" destination="3BV-Br-1Cx" id="W0t-f7-hVN"/>
+                        <outlet property="phraseFontSize" destination="0im-J7-ELT" id="DAf-V5-udH"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wme-Rv-sAD" userLabel="First Responder" sceneMemberID="firstResponder"/>

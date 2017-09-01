@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		1C0497041F56B2090096F7E6 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C0497031F56B2090096F7E6 /* Settings.storyboard */; };
 		1C0497071F56B3050096F7E6 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0497061F56B3050096F7E6 /* SettingsTableViewController.m */; };
-		1C7219BA1F560DAE007D199C /* Play.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C7219B91F560DAE007D199C /* Play.storyboard */; };
-		1C7219BD1F560DE6007D199C /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7219BC1F560DE6007D199C /* PlayViewController.m */; };
+		1C7219BA1F560DAE007D199C /* Catchphrase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C7219B91F560DAE007D199C /* Catchphrase.storyboard */; };
+		1C7219BD1F560DE6007D199C /* CatchphraseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7219BC1F560DE6007D199C /* CatchphraseViewController.m */; };
 		1C7219BF1F5611FA007D199C /* Media in Resources */ = {isa = PBXBuildFile; fileRef = 1C7219BE1F5611FA007D199C /* Media */; };
 		1C7219C21F5614C0007D199C /* PhrasesDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7219C11F5614C0007D199C /* PhrasesDatabase.m */; };
 		1C7219C61F5614D3007D199C /* PhraseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7219C51F5614D3007D199C /* PhraseManager.m */; };
@@ -22,6 +22,8 @@
 		1C94E11F1F55FEE500A0CF59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C94E11D1F55FEE500A0CF59 /* LaunchScreen.storyboard */; };
 		1CB0C82D1F57DC2D00F923CC /* SettingsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB0C82C1F57DC2D00F923CC /* SettingsHelper.m */; };
 		1CB0C8301F57DC3B00F923CC /* SettingsEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB0C82F1F57DC3B00F923CC /* SettingsEntity.m */; };
+		1CCB92EF1F59D5FF001B70EB /* Password.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CCB92EE1F59D5FF001B70EB /* Password.storyboard */; };
+		1CCB92F21F59D61B001B70EB /* PasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CCB92F11F59D61B001B70EB /* PasswordViewController.m */; };
 		1CE2009D1F57692A007591E9 /* Phrases in Resources */ = {isa = PBXBuildFile; fileRef = 1CE2009C1F57692A007591E9 /* Phrases */; };
 /* End PBXBuildFile section */
 
@@ -29,9 +31,9 @@
 		1C0497031F56B2090096F7E6 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		1C0497051F56B3050096F7E6 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
 		1C0497061F56B3050096F7E6 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
-		1C7219B91F560DAE007D199C /* Play.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Play.storyboard; sourceTree = "<group>"; };
-		1C7219BB1F560DE6007D199C /* PlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayViewController.h; sourceTree = "<group>"; };
-		1C7219BC1F560DE6007D199C /* PlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayViewController.m; sourceTree = "<group>"; };
+		1C7219B91F560DAE007D199C /* Catchphrase.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Catchphrase.storyboard; sourceTree = "<group>"; };
+		1C7219BB1F560DE6007D199C /* CatchphraseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatchphraseViewController.h; sourceTree = "<group>"; };
+		1C7219BC1F560DE6007D199C /* CatchphraseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatchphraseViewController.m; sourceTree = "<group>"; };
 		1C7219BE1F5611FA007D199C /* Media */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Media; sourceTree = "<group>"; };
 		1C7219C01F5614C0007D199C /* PhrasesDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhrasesDatabase.h; sourceTree = "<group>"; };
 		1C7219C11F5614C0007D199C /* PhrasesDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhrasesDatabase.m; sourceTree = "<group>"; };
@@ -51,6 +53,9 @@
 		1CB0C82C1F57DC2D00F923CC /* SettingsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsHelper.m; sourceTree = "<group>"; };
 		1CB0C82E1F57DC3B00F923CC /* SettingsEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsEntity.h; sourceTree = "<group>"; };
 		1CB0C82F1F57DC3B00F923CC /* SettingsEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsEntity.m; sourceTree = "<group>"; };
+		1CCB92EE1F59D5FF001B70EB /* Password.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Password.storyboard; sourceTree = "<group>"; };
+		1CCB92F01F59D61B001B70EB /* PasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordViewController.h; sourceTree = "<group>"; };
+		1CCB92F11F59D61B001B70EB /* PasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordViewController.m; sourceTree = "<group>"; };
 		1CE2009C1F57692A007591E9 /* Phrases */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Phrases; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,8 +140,10 @@
 			children = (
 				1C94E1151F55FEE500A0CF59 /* ViewController.h */,
 				1C94E1161F55FEE500A0CF59 /* ViewController.m */,
-				1C7219BB1F560DE6007D199C /* PlayViewController.h */,
-				1C7219BC1F560DE6007D199C /* PlayViewController.m */,
+				1C7219BB1F560DE6007D199C /* CatchphraseViewController.h */,
+				1C7219BC1F560DE6007D199C /* CatchphraseViewController.m */,
+				1CCB92F01F59D61B001B70EB /* PasswordViewController.h */,
+				1CCB92F11F59D61B001B70EB /* PasswordViewController.m */,
 				1C0497051F56B3050096F7E6 /* SettingsTableViewController.h */,
 				1C0497061F56B3050096F7E6 /* SettingsTableViewController.m */,
 			);
@@ -147,8 +154,9 @@
 			isa = PBXGroup;
 			children = (
 				1C94E1181F55FEE500A0CF59 /* Main.storyboard */,
-				1C7219B91F560DAE007D199C /* Play.storyboard */,
+				1C7219B91F560DAE007D199C /* Catchphrase.storyboard */,
 				1C0497031F56B2090096F7E6 /* Settings.storyboard */,
+				1CCB92EE1F59D5FF001B70EB /* Password.storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -217,7 +225,8 @@
 				1C94E11F1F55FEE500A0CF59 /* LaunchScreen.storyboard in Resources */,
 				1C7219BF1F5611FA007D199C /* Media in Resources */,
 				1C94E11C1F55FEE500A0CF59 /* Assets.xcassets in Resources */,
-				1C7219BA1F560DAE007D199C /* Play.storyboard in Resources */,
+				1CCB92EF1F59D5FF001B70EB /* Password.storyboard in Resources */,
+				1C7219BA1F560DAE007D199C /* Catchphrase.storyboard in Resources */,
 				1C94E11A1F55FEE500A0CF59 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -229,7 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C7219BD1F560DE6007D199C /* PlayViewController.m in Sources */,
+				1C7219BD1F560DE6007D199C /* CatchphraseViewController.m in Sources */,
 				1C0497071F56B3050096F7E6 /* SettingsTableViewController.m in Sources */,
 				1C7219C61F5614D3007D199C /* PhraseManager.m in Sources */,
 				1CB0C82D1F57DC2D00F923CC /* SettingsHelper.m in Sources */,
@@ -238,6 +247,7 @@
 				1C94E1141F55FEE500A0CF59 /* AppDelegate.m in Sources */,
 				1C94E1111F55FEE500A0CF59 /* main.m in Sources */,
 				1CB0C8301F57DC3B00F923CC /* SettingsEntity.m in Sources */,
+				1CCB92F21F59D61B001B70EB /* PasswordViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
