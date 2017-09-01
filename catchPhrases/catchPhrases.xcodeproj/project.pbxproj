@@ -13,7 +13,7 @@
 		1C7219BD1F560DE6007D199C /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7219BC1F560DE6007D199C /* PlayViewController.m */; };
 		1C7219BF1F5611FA007D199C /* Media in Resources */ = {isa = PBXBuildFile; fileRef = 1C7219BE1F5611FA007D199C /* Media */; };
 		1C7219C21F5614C0007D199C /* PhrasesDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7219C11F5614C0007D199C /* PhrasesDatabase.m */; };
-		1C7219C61F5614D3007D199C /* PhraseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7219C51F5614D3007D199C /* PhraseHelper.m */; };
+		1C7219C61F5614D3007D199C /* PhraseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7219C51F5614D3007D199C /* PhraseManager.m */; };
 		1C94E1111F55FEE500A0CF59 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C94E1101F55FEE500A0CF59 /* main.m */; };
 		1C94E1141F55FEE500A0CF59 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C94E1131F55FEE500A0CF59 /* AppDelegate.m */; };
 		1C94E1171F55FEE500A0CF59 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C94E1161F55FEE500A0CF59 /* ViewController.m */; };
@@ -35,8 +35,8 @@
 		1C7219BE1F5611FA007D199C /* Media */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Media; sourceTree = "<group>"; };
 		1C7219C01F5614C0007D199C /* PhrasesDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhrasesDatabase.h; sourceTree = "<group>"; };
 		1C7219C11F5614C0007D199C /* PhrasesDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhrasesDatabase.m; sourceTree = "<group>"; };
-		1C7219C41F5614D3007D199C /* PhraseHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhraseHelper.h; sourceTree = "<group>"; };
-		1C7219C51F5614D3007D199C /* PhraseHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhraseHelper.m; sourceTree = "<group>"; };
+		1C7219C41F5614D3007D199C /* PhraseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhraseManager.h; sourceTree = "<group>"; };
+		1C7219C51F5614D3007D199C /* PhraseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhraseManager.m; sourceTree = "<group>"; };
 		1C94E10C1F55FEE500A0CF59 /* catchPhrases.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = catchPhrases.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C94E1101F55FEE500A0CF59 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1C94E1121F55FEE500A0CF59 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -79,8 +79,8 @@
 		1C7219C71F5614D8007D199C /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				1C7219C41F5614D3007D199C /* PhraseHelper.h */,
-				1C7219C51F5614D3007D199C /* PhraseHelper.m */,
+				1C7219C41F5614D3007D199C /* PhraseManager.h */,
+				1C7219C51F5614D3007D199C /* PhraseManager.m */,
 				1CB0C82B1F57DC2D00F923CC /* SettingsHelper.h */,
 				1CB0C82C1F57DC2D00F923CC /* SettingsHelper.m */,
 			);
@@ -231,7 +231,7 @@
 			files = (
 				1C7219BD1F560DE6007D199C /* PlayViewController.m in Sources */,
 				1C0497071F56B3050096F7E6 /* SettingsTableViewController.m in Sources */,
-				1C7219C61F5614D3007D199C /* PhraseHelper.m in Sources */,
+				1C7219C61F5614D3007D199C /* PhraseManager.m in Sources */,
 				1CB0C82D1F57DC2D00F923CC /* SettingsHelper.m in Sources */,
 				1C94E1171F55FEE500A0CF59 /* ViewController.m in Sources */,
 				1C7219C21F5614C0007D199C /* PhrasesDatabase.m in Sources */,

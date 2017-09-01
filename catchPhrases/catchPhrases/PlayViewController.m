@@ -8,13 +8,18 @@
 
 #import "PlayViewController.h"
 #import <AVFoundation/AVFoundation.h>
-#import "PhraseHelper.h"
+#import "PhraseManager.h"
+#import "SettingsHelper.h"
+#import "SettingsEntity.h"
 
 
 
 @interface PlayViewController () <UIGestureRecognizerDelegate>
 
-@property (nonatomic) AVPlayer *avPlayer;
+@property (strong, nonatomic) PhraseManager  *phraseManager;
+@property (strong, nonatomic) AVPlayer       *avPlayer;
+@property (weak, nonatomic) IBOutlet UILabel *middleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *largeLabel;
 
 @end
 
@@ -24,7 +29,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.phraseManager    = [PhraseManager sharedInstance];
+    self.title            = nil;
+    self.middleLabel.text = nil;
+    self.largeLabel.text  = nil;
     
+    [self.phraseManager startNewGameSesion];
     [self addGesture];
     [self startCountDown];
     [self showNextPhrase];
@@ -37,6 +47,7 @@
 
 
 
+#pragma mark - Countdown
 - (void)startCountDown {
     NSString *filepath  = [[NSBundle mainBundle] pathForResource:@"countdown320.mp3" ofType:nil inDirectory:@"Media"];
     NSURL *fileURL      = [NSURL fileURLWithPath:filepath];
@@ -48,17 +59,17 @@
     [self.avPlayer play];
 }
 
-
 - (void)itemDidFinishPlaying:(NSNotification *)notification {
     [self backButtonPressed:nil];
 }
 
 
+
+#pragma mark - Actions
 - (IBAction)backButtonPressed:(id)sender {
     [self.avPlayer pause];
     self.avPlayer = nil;
-    if ([_delegate respondsToSelector:@selector(playViewController:backButtonPressed:)])
-        [_delegate playViewController:self backButtonPressed:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
@@ -66,19 +77,37 @@
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showNextPhrase)];
     [tapGesture setNumberOfTapsRequired:1];
     [tapGesture setDelegate:self];
-    //[self.view setUserInteractionEnabled:YES];
-    [self.view addGestureRecognizer:tapGesture];
+    [self.view  addGestureRecognizer:tapGesture];
 }
 
 
 - (void)showNextPhrase {
-    NSString *phrase = [PhraseHelper nextPhrase];
+    NSString *phrase = [self.phraseManager nextPhrase];
     if (!phrase) {
         [self backButtonPressed:nil];
         return;
     }
-    self.title = phrase;
+    
+    SettingsEntity *settings = [SettingsHelper loadSettings];
+    switch (settings.phraseFontSize) {
+        
+        case CatchPhraseFontSizeSmall:
+            self.title = phrase;
+            break;
+            
+        case CatchPhraseFontSizeMiddle:
+            self.middleLabel.text = phrase;
+            break;
+        
+        case CatchPhraseFontSizeLarge:
+            self.largeLabel.text = phrase;
+            break;
+            
+        default: break;
+    }
+    
 }
+
 
 
 

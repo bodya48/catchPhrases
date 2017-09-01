@@ -9,13 +9,13 @@
 #import "SettingsTableViewController.h"
 #import "SettingsHelper.h"
 #import "SettingsEntity.h"
-#import "PhraseHelper.h"
-#import "PhrasesDatabase.h"
+#import "PhraseManager.h"
 
 
 
 @interface SettingsTableViewController ()
 
+@property (strong, nonatomic) PhraseManager             *phraseManager;
 @property (strong, nonatomic) SettingsEntity            *oldSettings;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *nounsAmount;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *catchphraseFontSize;
@@ -31,6 +31,7 @@
 #pragma mark - View
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.phraseManager = [PhraseManager sharedInstance];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -110,23 +111,22 @@
 
 #pragma mark - Settings
 - (void)prepopulateCategoriesTitles {
-    PhrasesDatabase *database   = [PhrasesDatabase sharedInstance];
     NSMutableString *labelText  = [[NSMutableString alloc] init];
     UITableViewCell *cell;
     
     cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     [labelText appendString:cell.textLabel.text];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ [%d]", labelText, [database nounsCount]];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ [%d]", labelText, [self.phraseManager nounsCount]];
     
     cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
     labelText = [[NSMutableString alloc] init];
     [labelText appendString:cell.textLabel.text];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ [%d]", labelText, [database moviesCount]];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ [%d]", labelText, [self.phraseManager moviesCount]];
     
     cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
     labelText = [[NSMutableString alloc] init];
     [labelText appendString:cell.textLabel.text];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ [%d]", labelText, [database idiomsCount]];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ [%d]", labelText, [self.phraseManager idiomsCount]];
 }
 
 - (void)prepopulateSettings {
@@ -178,7 +178,7 @@
     
     if (![SettingsHelper isSetting:self.oldSettings equalTo:newSettings]) {
         [SettingsHelper saveSettings:newSettings];
-        [PhraseHelper updateAllPhrasesAccordingToSettings];
+        [self.phraseManager updateAllPhrasesAccordingToSettings];
     }
 }
 

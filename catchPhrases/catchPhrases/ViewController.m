@@ -12,7 +12,7 @@
 
 
 
-@interface ViewController () <PlayViewControllerDelegate, UIPopoverPresentationControllerDelegate, SettingsTableViewControllerDelegate>
+@interface ViewController () <UIPopoverPresentationControllerDelegate, SettingsTableViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *settingsButton;
 
@@ -31,22 +31,9 @@
 
 - (IBAction)startGamePressed:(id)sender {
     UIStoryboard *storyboard        = [UIStoryboard storyboardWithName:@"Play" bundle:nil];
-    UINavigationController *gameVC  = [storyboard instantiateInitialViewController];
-    gameVC.modalTransitionStyle     = UIModalTransitionStyleCrossDissolve;
-    
-    id viewController = [gameVC viewControllers][0];
-    if ([viewController isKindOfClass:[PlayViewController class]])
-        [((PlayViewController *)viewController) setDelegate:self];
-    
-    [self presentViewController:gameVC animated:YES completion:nil];
+    PlayViewController *gameVC = [storyboard instantiateInitialViewController];
+    [self.navigationController pushViewController:gameVC animated:YES];
 }
-
-
-
-- (void)playViewController:(PlayViewController *)viewController backButtonPressed:(id)sender {
-    [viewController dismissViewControllerAnimated:YES completion:nil];
-}
-
 
 
 

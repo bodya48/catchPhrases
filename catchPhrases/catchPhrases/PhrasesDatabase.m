@@ -23,7 +23,6 @@
 @property (strong, nonatomic) NSMutableArray    *usedPhrases;
 
 @property (strong, nonatomic) NSArray *nouns;
-@property (strong, nonatomic) NSArray *nounsLong;
 @property (strong, nonatomic) NSArray *movies;
 @property (strong, nonatomic) NSArray *idioms;
 
@@ -41,12 +40,12 @@
         instance             = [[PhrasesDatabase alloc] init];
         instance.allPhrases  = [[NSMutableArray alloc] init];
         instance.usedPhrases = [[NSMutableArray alloc] init];
-        [instance pullAllPhrases];
+        [instance pullAllPhrasesFromCSV];
     });
     return instance;
 }
 
-- (void)pullAllPhrases {
+- (void)pullAllPhrasesFromCSV {
     self.nouns      = [self parseCSVFile:csvNounsFileName];
     self.movies     = [self parseCSVFile:csvMoviesFileName];
     self.idioms     = [self parseCSVFile:csvIdiomsFileName];
@@ -68,30 +67,27 @@
 
 
 #pragma mark - Prepare phrases for game
-- (void)prepareAllPhrases {
+- (void)preparePhrasesForGameSession {
     SettingsEntity *settings = [SettingsHelper loadSettings];
+    self.allPhrases          = [[NSMutableArray alloc] init];
+    if (settings.clearUsedPhrases)
+        self.usedPhrases     = [[NSMutableArray alloc] init];
     
     if (settings.nouns)
-        [self addPhrases:self.nouns toArray:self.allPhrases];
+        [self addPhrases:self.nouns  withLimitNumber:settings.nounsAmount];
+    
     if (settings.movies)
-        [self addPhrases:self.movies toArray:self.allPhrases];
+        [self addPhrases:self.movies withLimitNumber:NounsAmountAll];
+    
     if (settings.idioms)
-        [self addPhrases:self.idioms toArray:self.allPhrases];
+        [self addPhrases:self.idioms withLimitNumber:NounsAmountAll];
     
     [self randomizeAllPhrases];
 }
 
 
-- (void)updateAllPhrasesAccordingToSettings {
-    self.allPhrases  = [[NSMutableArray alloc] init];
-    
-    if ([SettingsHelper loadSettings].clearUsedPhrases)
-        self.usedPhrases = [[NSMutableArray alloc] init];
-    
-    [self prepareAllPhrases];
-}
 
-
+#pragma mark - Helpers
 - (NSArray *)parseCSVFile:(NSString *)fileName {
     NSArray *parsedCSV        = [[NSMutableArray alloc] init];
     NSError *error;
@@ -104,10 +100,37 @@
 }
 
 
-- (void)addPhrases:(NSArray *)phrasesArray toArray:(NSMutableArray *)originalArray {
-    for (NSString *phrase in phrasesArray) {
+
+- (void)addPhrases:(NSArray *)phrasesArray withLimitNumber:(NounsAmount)limitNumber {
+    NSInteger limit;
+    switch (limitNumber) {
+        case NounsAmount50:
+            limit = 50; break;
+        case NounsAmount100:
+            limit = 100; break;
+        case NounsAmount200:
+            limit = 200; break;
+        case NounsAmount300:
+            limit = 300; break;
+        case NounsAmount500:
+            limit = 500; break;
+        case NounsAmount1000:
+            limit = 1000; break;
+        case NounsAmount2000:
+            limit = 2000; break;
+        case NounsAmountAll:
+            limit = [phrasesArray count]; break;
+        default:
+            limit = [phrasesArray count]; break;
+    }
+    
+    for (int index = 0; index < limit; index++) {
+        if (index >= [phrasesArray count]) return;
+        
+        NSString *phrase = phrasesArray[index];
         if (!phrase || [phrase length] == 0) return;
-        [originalArray addObject:phrase];
+        
+        [self.allPhrases addObject:phrase];
     }
 }
 
@@ -118,12 +141,12 @@
 }
 
 
+- (void)clearUsedPhrases {
+    self.usedPhrases = [[NSMutableArray alloc] init];
+}
 
 - (int)nounsCount {
     return (int)[self.nouns count];
-}
-- (int)nounsLongCount {
-    return (int)[self.nounsLong count];
 }
 - (int)moviesCount {
     return (int)[self.movies count];

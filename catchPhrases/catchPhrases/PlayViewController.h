@@ -7,18 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-@class PlayViewController;
-
-@protocol PlayViewControllerDelegate <NSObject>
-
-- (void)playViewController:(PlayViewController *)viewController backButtonPressed:(id)sender;
-
-@end
-
 
 
 @interface PlayViewController : UIViewController
-
-@property (weak, nonatomic) id<PlayViewControllerDelegate> delegate;
 
 @end

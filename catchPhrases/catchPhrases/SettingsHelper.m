@@ -34,8 +34,9 @@
     if (oldSettings.nouns   != newSetting.nouns)    return NO;
     if (oldSettings.movies  != newSetting.movies)   return NO;
     if (oldSettings.idioms  != newSetting.idioms)   return NO;
-    if (oldSettings.nounsAmount != newSetting.nounsAmount) return NO;
-    
+    if (oldSettings.nounsAmount      != newSetting.nounsAmount)      return NO;
+    if (oldSettings.phraseFontSize   != newSetting.phraseFontSize)   return NO;
+    if (oldSettings.clearUsedPhrases != newSetting.clearUsedPhrases) return NO;
     return YES;
 }
 

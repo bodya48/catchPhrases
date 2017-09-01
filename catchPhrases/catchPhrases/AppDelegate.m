@@ -10,18 +10,16 @@
 #import "PhrasesDatabase.h"
 
 
-
 @interface AppDelegate ()
 
 @end
-
 
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [[PhrasesDatabase sharedInstance] prepareAllPhrases];
+    [[PhrasesDatabase sharedInstance] preparePhrasesForGameSession];
     return YES;
 }
 
